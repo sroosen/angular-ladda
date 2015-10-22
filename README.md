@@ -118,6 +118,14 @@ change color of spinner
 </button>
 ```
 
+change the wait time before showing the spinner (in ms)
+
+```html
+<button ladda="loginLoading" ng-click="login()" data-after="250">
+  Login
+</button>
+```
+
 ## Browserify support
 
 angular-ladda doesn't work properly with browserify, since it references the Spinner and Ladda libraries, which are not proper AMD modules (and are also not always used as such in angular-ladda's code).
