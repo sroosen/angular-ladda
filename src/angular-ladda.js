@@ -22,11 +22,12 @@
   'use strict';
 
   var moduleName = 'angular-ladda';
-  
+
   angular.module(moduleName, [])
     .provider('ladda', function () {
       var opts = {
-        'style': 'zoom-in'
+        'style': 'zoom-in',
+        'after': 0
       };
       return {
         setOption: function (newOpts) {
@@ -71,7 +72,12 @@
               return;
             }
             if(!ladda.isLoading()) {
-              ladda.start();
+              var after = element.attr('data-after') || laddaOption.after;
+              if (after) {
+                ladda.startAfter(after);
+              } else {
+                ladda.start();
+              }
             }
             if(angular.isNumber(loading)) {
               ladda.setProgress(loading);
@@ -80,6 +86,6 @@
         }
       };
     }]);
-    
+
   return moduleName;
 }));
